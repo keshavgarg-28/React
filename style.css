@@ -2,15 +2,25 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .container {
     width: 400px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 120px);
     margin: 60px auto;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px #cccccc;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -37,6 +47,10 @@ button {
 
 ul {
     padding: 0;
+    margin-bottom: 0;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
 }
 
 li {
@@ -45,12 +59,17 @@ li {
     padding: 10px;
     background-color: #eeeeee;
     display: flex;
+    align-items: flex-start;
+    gap: 5px;
 }
 
 li span {
     flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 li button {
-    margin-left: 5px;
+    flex-shrink: 0;
 }
