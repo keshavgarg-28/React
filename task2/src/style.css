@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    padding: 10px 12px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #006f00;
+}
+
+#root,
+.app {
+    height: 100vh;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    height: 64px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    background-color: white;
+    box-shadow: 0 2px 10px #dddddd;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.logo {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    background-color: green;
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+}
+
+.user-name {
+    font-weight: 600;
+}
+
+.page {
+    min-height: 0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+    overflow: hidden;
+}
+
+.container {
+    width: 400px;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #cccccc;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+input {
+    min-width: 0;
+    flex: 1;
+    padding: 10px;
+}
+
+ul {
+    padding: 0;
+    margin-bottom: 0;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+li {
+    list-style: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #eeeeee;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+li span {
+    min-width: 0;
+    flex: 1;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+li button {
+    flex-shrink: 0;
+}
+
+@media (max-width: 520px) {
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    form {
+        flex-direction: column;
+    }
+}
