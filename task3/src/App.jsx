@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchBar from "./components/SearchBar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import TaskForm from "./components/TaskForm.jsx";
 import TaskHeader from "./components/TaskHeader.jsx";
 import TaskTable from "./components/TaskTable.jsx";
@@ -8,6 +9,7 @@ import { filterTabs, statusOptions } from "./constants/taskOptions.js";
 function App() {
     const [tasks, setTasks] = useState([]);
     const [nextTaskId, setNextTaskId] = useState(1);
+    const [theme, setTheme] = useState("light");
 
     const [taskName, setTaskName] = useState("");
     const [taskStatus, setTaskStatus] = useState("todo");
@@ -88,45 +90,57 @@ function App() {
         return selectedStatus ? selectedStatus.label : status;
     }
 
+    function changeTheme() {
+        if (theme === "light") {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    }
+
     return (
-        <main className="page">
-            <section className="task-card">
-                <TaskHeader
-                    activeFilter={activeFilter}
-                    filterTabs={filterTabs}
-                    setActiveFilter={setActiveFilter}
-                />
+        <div className={`app ${theme}`}>
+            <Navbar theme={theme} changeTheme={changeTheme} />
 
-                <SearchBar
-                    searchText={searchText}
-                    setSearchText={setSearchText}
-                />
+            <main className="page">
+                <section className="task-card">
+                    <TaskHeader
+                        activeFilter={activeFilter}
+                        filterTabs={filterTabs}
+                        setActiveFilter={setActiveFilter}
+                    />
 
-                <TaskForm
-                    addTask={addTask}
-                    setTaskName={setTaskName}
-                    setTaskStatus={setTaskStatus}
-                    statusOptions={statusOptions}
-                    taskName={taskName}
-                    taskStatus={taskStatus}
-                />
+                    <SearchBar
+                        searchText={searchText}
+                        setSearchText={setSearchText}
+                    />
 
-                <TaskTable
-                    editingKey={editingKey}
-                    editingName={editingName}
-                    editingStatus={editingStatus}
-                    editTask={editTask}
-                    getStatusLabel={getStatusLabel}
-                    cancelEditing={cancelEditing}
-                    deleteTask={deleteTask}
-                    saveTask={saveTask}
-                    setEditingName={setEditingName}
-                    setEditingStatus={setEditingStatus}
-                    statusOptions={statusOptions}
-                    tasks={filteredTasks}
-                />
-            </section>
-        </main>
+                    <TaskForm
+                        addTask={addTask}
+                        setTaskName={setTaskName}
+                        setTaskStatus={setTaskStatus}
+                        statusOptions={statusOptions}
+                        taskName={taskName}
+                        taskStatus={taskStatus}
+                    />
+
+                    <TaskTable
+                        editingKey={editingKey}
+                        editingName={editingName}
+                        editingStatus={editingStatus}
+                        editTask={editTask}
+                        getStatusLabel={getStatusLabel}
+                        cancelEditing={cancelEditing}
+                        deleteTask={deleteTask}
+                        saveTask={saveTask}
+                        setEditingName={setEditingName}
+                        setEditingStatus={setEditingStatus}
+                        statusOptions={statusOptions}
+                        tasks={filteredTasks}
+                    />
+                </section>
+            </main>
+        </div>
     );
 }
 
